@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: 'false',
       hasTrunfo: '',
       isSaveButtonDisabled: 'true',
+      list: [],
     };
     this.onInputChangeFunction = this.onInputChangeFunction.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -35,10 +36,46 @@ class App extends React.Component {
     });
   }
 
+  // Source: Ajuda da Allana na explicação do passo a passo do requisito 6.
   onSubmit(event) {
     event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+    const newObj = {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    };
+    this.setState((item) => (
+      {
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: 'false',
+        list: [...item.list, newObj],
+      }));
   }
   // Source: Ajuda do Laecio que me explicou o passo a passo do requisito 5.
+  // https://pt.stackoverflow.com/questions/268673/converter-string-em-number
 
   verificationButton() {
     const {
