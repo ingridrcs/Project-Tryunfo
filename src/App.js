@@ -70,16 +70,16 @@ class App extends React.Component {
         cardRare: 'normal',
         cardTrunfo: 'false',
         list: [...item.list, newObj],
-      }));
+      }), () => this.checkSuperTrunfo());
   }
 
-  // checkSuperTrunfo = () => {
-  //   const { list } = this.state;
-  //   const checkTrunfo = list.every((item) => item.cardTrunfo !== false);
-  //   if (checkTrunfo) {
-  //     this.setState({ hasTrunfo: true });
-  //   }
-  // };
+  checkSuperTrunfo = () => {
+    const { list } = this.state;
+    const checkTrunfo = list.every((item) => item.cardTrunfo !== false);
+    if (checkTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+  };
 
   // Source: Ajuda do Laecio que me explicou o passo a passo do requisito 5.
   // https://pt.stackoverflow.com/questions/268673/converter-string-em-number
