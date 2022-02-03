@@ -13,9 +13,9 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: 'false',
-      hasTrunfo: 'false',
-      isSaveButtonDisabled: 'true',
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
       list: [],
     };
     this.onInputChangeFunction = this.onInputChangeFunction.bind(this);
@@ -68,7 +68,7 @@ class App extends React.Component {
         cardAttr3: '0',
         cardImage: '',
         cardRare: 'normal',
-        cardTrunfo: 'false',
+        cardTrunfo: false,
         list: [...item.list, newObj],
       }), () => this.checkSuperTrunfo());
   }
