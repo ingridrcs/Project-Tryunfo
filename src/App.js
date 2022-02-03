@@ -14,7 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: 'false',
-      hasTrunfo: '',
+      hasTrunfo: 'false',
       isSaveButtonDisabled: 'true',
       list: [],
     };
@@ -48,7 +48,6 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
     } = this.state;
     const newObj = {
       cardName,
@@ -59,7 +58,6 @@ class App extends React.Component {
       cardAttr3,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
     };
     this.setState((item) => (
       {
@@ -74,6 +72,15 @@ class App extends React.Component {
         list: [...item.list, newObj],
       }));
   }
+
+  // checkSuperTrunfo = () => {
+  //   const { list } = this.state;
+  //   const checkTrunfo = list.every((item) => item.cardTrunfo !== false);
+  //   if (checkTrunfo) {
+  //     this.setState({ hasTrunfo: true });
+  //   }
+  // };
+
   // Source: Ajuda do Laecio que me explicou o passo a passo do requisito 5.
   // https://pt.stackoverflow.com/questions/268673/converter-string-em-number
 
@@ -102,9 +109,9 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form
+          { ...this.state }
           onInputChange={ this.onInputChangeFunction }
           onSaveButtonClick={ this.onSubmit }
-          { ...this.state }
         />
         <Card onInputChange={ this.onInputChangeFunction } { ...this.state } />
       </div>
