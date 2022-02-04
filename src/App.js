@@ -105,6 +105,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { list } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -114,6 +115,25 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSubmit }
         />
         <Card onInputChange={ this.onInputChangeFunction } { ...this.state } />
+        <div>
+          {
+            list.map((item) => (
+              <div key={ item.cardName }>
+                <Card
+                  key={ item.cardName }
+                  cardName={ item.cardName }
+                  cardDescription={ item.cardDescription }
+                  cardAttr1={ item.cardAttr1 }
+                  cardAttr2={ item.cardAttr2 }
+                  cardAttr3={ item.cardAttr3 }
+                  cardImage={ item.cardImage }
+                  cardRare={ item.cardRare }
+                  cardTrunfo={ item.cardTrunfo }
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }
